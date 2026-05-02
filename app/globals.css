@@ -119,6 +119,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   overflow-x: hidden;
+  overflow-y: auto;
   width: 100%;
 }
 
@@ -126,10 +127,10 @@ body {
   background: var(--bg-ivory);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-weight: 400; /* Core principle: 400 everywhere */
-  overflow-x: hidden;
-  width: 100%;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow: visible;
 }
 
 ::selection {

@@ -14,8 +14,8 @@ import {
 
 const CONTACTS = [
   { label: "Email", val: "yasser.haoues66@gmail.com", href: "mailto:yasser.haoues66@gmail.com", icon: <HiMail /> },
-  { label: "Phone", val: "+213 559 83 65 37", href: "tel:+213559836537", icon: <HiPhone /> },
-  { label: "GitHub", val: "YasserHaoues", href: "https://github.com/YasserHaoues", icon: <SiGithub /> },
+  { label: "Phone", val: "+213 562451840", href: "tel:+213562451840", icon: <HiPhone /> },
+  { label: "GitHub", val: "yasxer", href: "https://github.com/yasxer", icon: <SiGithub /> },
   { label: "Location", val: "City Ben Zarga, Alger", href: "#", icon: <HiLocationMarker /> },
 ];
 

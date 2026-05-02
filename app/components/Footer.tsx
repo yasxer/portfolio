@@ -46,14 +46,14 @@ export default function Footer() {
             <HiMail />
           </a>
           <a
-            href="tel:+213559836537"
+            href="tel:+213562451840"
             className="foot-a"
             aria-label="Phone"
           >
             <HiPhone />
           </a>
           <a
-            href="https://github.com/YasserHaoues"
+            href="https://github.com/yasxer"
             className="foot-a"
             target="_blank"
             rel="noopener noreferrer"
