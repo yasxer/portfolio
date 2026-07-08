@@ -3,6 +3,7 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { HiArrowRight } from "react-icons/hi";
+import { HiOutlineDocumentText } from "react-icons/hi2";
 
 const HeroScene = lazy(() => import("./HeroScene"));
 
@@ -108,6 +109,14 @@ export default function Hero() {
             </a>
             <a href="#contact" className="btn-solid-cream">
               Contact me
+            </a>
+            <a
+              href="/Certificate.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-solid-cream"
+            >
+              <HiOutlineDocumentText /> View Certificates
             </a>
           </motion.div>
         </div>
