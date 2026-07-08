@@ -17,6 +17,24 @@ import {
 
 const PROJECTS = [
   {
+    title: "AlgServ",
+    sub: "Services Platform",
+    desc: "A full-featured services marketplace connecting clients with professionals across Algeria. Streamlined booking, provider management, and a polished responsive interface.",
+    type: "Full-Stack Platform",
+    url: "https://algserv.app/",
+    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind"],
+    icon: <SiNextdotjs />,
+  },
+  {
+    title: "Shipix",
+    sub: "Shipping & Logistics",
+    desc: "A modern shipping and delivery management platform handling shipment tracking, logistics workflows, and multilingual support for a seamless customer experience.",
+    type: "Web Application",
+    url: "https://shipix.app/fr",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind"],
+    icon: <SiReact />,
+  },
+  {
     title: "Storix",
     sub: "Hanot Dashboard",
     desc: "A comprehensive store management dashboard for inventory tracking, sales analytics, and business operations. Robust backend architecture with a crisp interface.",
