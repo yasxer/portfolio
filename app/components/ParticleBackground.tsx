@@ -2,6 +2,38 @@
 
 import { useEffect, useRef } from "react";
 
+class Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  radius: number;
+  opacity: number;
+
+  constructor(w: number, h: number) {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.radius = Math.random() * 1.5 + 0.5;
+    this.opacity = Math.random() * 0.5 + 0.1;
+  }
+
+  update(w: number, h: number) {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > w) this.vx *= -1;
+    if (this.y < 0 || this.y > h) this.vy *= -1;
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(124, 58, 237, ${this.opacity})`;
+    ctx.fill();
+  }
+}
+
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -14,44 +46,12 @@ export default function ParticleBackground() {
 
     let animationId: number;
     let particles: Particle[] = [];
-    let mouse = { x: -1000, y: -1000 };
+    const mouse = { x: -1000, y: -1000 };
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-
-    class Particle {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      opacity: number;
-
-      constructor(w: number, h: number) {
-        this.x = Math.random() * w;
-        this.y = Math.random() * h;
-        this.vx = (Math.random() - 0.5) * 0.3;
-        this.vy = (Math.random() - 0.5) * 0.3;
-        this.radius = Math.random() * 1.5 + 0.5;
-        this.opacity = Math.random() * 0.5 + 0.1;
-      }
-
-      update(w: number, h: number) {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > w) this.vx *= -1;
-        if (this.y < 0 || this.y > h) this.vy *= -1;
-      }
-
-      draw(ctx: CanvasRenderingContext2D) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(124, 58, 237, ${this.opacity})`;
-        ctx.fill();
-      }
-    }
 
     const init = () => {
       resize();

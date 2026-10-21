@@ -11,11 +11,20 @@ import {
   fadeUp,
   fadeLeft,
   fadeRight,
-  scaleUp,
   lineReveal,
 } from "./MotionSection";
+import DesignPortal from "./DesignPortal";
 
 const PROJECTS = [
+  {
+    title: "Permix",
+    sub: "Driving School Management",
+    desc: "An all-in-one workspace for Algerian driving schools: candidate files, installment payments with printable receipts, weekly lesson scheduling, and exam sessions. Fully translated in Arabic, French, and English with RTL support.",
+    type: "SaaS Platform",
+    url: "https://permix.app",
+    tags: ["Next.js", "i18n", "RTL"],
+    icon: <SiNextdotjs />,
+  },
   {
     title: "AlgServ",
     sub: "Services Platform",
@@ -152,6 +161,8 @@ export default function Projects() {
             </motion.article>
           ))}
         </div>
+
+        <DesignPortal />
       </div>
     </MotionSection>
   );

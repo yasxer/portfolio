@@ -9,7 +9,6 @@ import {
   fadeLeft,
   fadeRight,
   lineReveal,
-  scaleUp,
 } from "./MotionSection";
 
 export default function About() {
