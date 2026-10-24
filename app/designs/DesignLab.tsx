@@ -10,6 +10,7 @@ import Footer from "../components/Footer";
 import { fadeUp, fadeLeft, fadeRight, lineReveal } from "../components/MotionSection";
 import izemImg from "@/public/designs/izem.jpg";
 import katanaImg from "@/public/designs/katana.jpg";
+import rifkusImg from "@/public/designs/rifkus.jpg";
 
 type Work = {
   n: string;
@@ -42,6 +43,16 @@ const WORKS: Work[] = [
     tags: ["Real-time 3D", "Scroll-driven", "WebGL"],
     url: "https://katana-omega.vercel.app",
     img: katanaImg,
+  },
+  {
+    n: "03",
+    title: "Rifkus Chips",
+    kicker: "Le croustillant du bled.",
+    category: "Concept / Snack Brand",
+    desc: "An unofficial concept for an Algerian snack brand. You scroll to tear the pack open, chips burst out, and the ten flavours scroll past like a shop shelf, in French and Arabic.",
+    tags: ["Scroll-driven", "3D Pack", "FR / AR"],
+    url: "https://rifkus-jet.vercel.app",
+    img: rifkusImg,
   },
 ];
 
@@ -136,7 +147,7 @@ function LabNav() {
 }
 
 const STATS = [
-  { v: "02", l: "Live brand sites" },
+  { v: String(WORKS.length).padStart(2, "0"), l: "Live brand sites" },
   { v: "3D", l: "Real-time scenes" },
   { v: "100%", l: "Hand-coded" },
 ];
@@ -320,7 +331,7 @@ function SecHead({ n, label, title, children }: { n: string; label: string; titl
   );
 }
 
-function WorkCard({ w, i }: { w: Work; i: number }) {
+function WorkCard({ w, i, wide }: { w: Work; i: number; wide: boolean }) {
   const mediaRef = useRef<HTMLAnchorElement>(null);
 
   const track = (e: React.MouseEvent) => {
@@ -333,11 +344,11 @@ function WorkCard({ w, i }: { w: Work; i: number }) {
 
   return (
     <motion.article
-      className="dl-card"
+      className={`dl-card${wide ? " dl-card-wide" : ""}`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
-      variants={i % 2 === 0 ? fadeLeft : fadeRight}
+      variants={wide ? fadeUp : i % 2 === 0 ? fadeLeft : fadeRight}
     >
       <div className="dl-card-head">
         <span className="proj-type" style={{ margin: 0 }}>{w.category}</span>
@@ -352,7 +363,7 @@ function WorkCard({ w, i }: { w: Work; i: number }) {
         onMouseMove={track}
         aria-label={`Visit ${w.title}`}
       >
-        <Image src={w.img} alt={`${w.title} website`} fill sizes="(max-width: 900px) 100vw, 50vw" />
+        <Image src={w.img} alt={`${w.title} website`} fill sizes={wide ? "(max-width: 900px) 100vw, 60vw" : "(max-width: 900px) 100vw, 50vw"} />
         <span className="dl-card-chip">View live <HiArrowUpRight /></span>
       </a>
       <div className="dl-card-body">
@@ -379,21 +390,9 @@ function WorkSection() {
         <SecHead n="01" label="Selected work" title={<>SITES THAT FEEL<br /><span className="dl-orange">LIKE BRANDS</span></>} />
         <div className="dl-grid">
           {WORKS.map((w, i) => (
-            <WorkCard key={w.n} w={w} i={i} />
+            // An odd last card spans the full row so the grid never leaves a hole.
+            <WorkCard key={w.n} w={w} i={i} wide={WORKS.length % 2 === 1 && i === WORKS.length - 1} />
           ))}
-          <motion.div
-            className="dl-forge"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={fadeUp}
-          >
-            <span className="dl-card-n">{String(WORKS.length + 1).padStart(2, "0")}</span>
-            <div>
-              <span className="proj-type" style={{ marginBottom: 8 }}>In the forge</span>
-              <p className="heading-sm">NEXT DROP, COMING SOON</p>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>

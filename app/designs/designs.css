@@ -208,7 +208,8 @@
 .dl-float.on { border-left-color: var(--mistral-orange); box-shadow: var(--shadow-warm-hover); }
 .dl-float:hover { border-left-color: var(--mistral-orange); }
 .dl-float-0 { top: 6%; left: -6%; animation: idle-float 6s ease-in-out infinite; }
-.dl-float-1 { bottom: 8%; right: -4%; animation: idle-float-reverse 7s ease-in-out infinite; }
+.dl-float-1 { top: 44%; right: -12%; animation: idle-float-reverse 7s ease-in-out infinite; }
+.dl-float-2 { bottom: 4%; left: 2%; animation: idle-float 8s ease-in-out infinite; }
 .dl-float-n {
   display: grid;
   place-items: center;
@@ -366,15 +367,15 @@
 .dl-card-kicker { color: var(--mistral-orange); margin-bottom: 16px; }
 .dl-card-body .proj-tags { margin: 24px 0; }
 .dl-card-btn { margin-top: auto; align-self: flex-start; padding: 12px 24px; }
-.dl-forge {
+.dl-card-wide {
   grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  padding: 40px 28px;
-  border: 2px dashed var(--border-warm);
-  background: repeating-linear-gradient(-45deg, var(--bg-ivory) 0 14px, var(--bg-cream) 14px 15px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
 }
+.dl-card-wide .dl-card-head { grid-column: 1 / -1; }
+.dl-card-wide .dl-card-media { aspect-ratio: auto; min-height: 100%; }
+.dl-card-wide .dl-card-body { padding: 40px; justify-content: center; }
 
 /* ── Approach (dark band, like the footer) ── */
 .dl-dark { background: var(--mistral-black); color: var(--text-light); overflow: hidden; }
@@ -459,6 +460,9 @@
   .dl-orbit { width: min(400px, 82vw); }
   .dl-float-0 { left: 0; }
   .dl-float-1 { right: 0; }
+  .dl-card-wide { display: flex; }
+  .dl-card-wide .dl-card-media { aspect-ratio: 16 / 10; min-height: 0; }
+  .dl-card-wide .dl-card-body { padding: 28px; }
   .dl-card-media { cursor: pointer; }
   .dl-cta .hero-actions { justify-content: center; }
   .dl-statement { text-align: center; }
@@ -476,7 +480,7 @@
   .dl-float-txt small { display: none; }
   .dl-marquee-group > span { font-size: 15px; }
   .dl-marquee { padding: 12px 0; }
-  .dl-forge { flex-direction: column; align-items: flex-start; gap: 16px; padding: 28px 20px; }
+  .dl-card-wide .dl-card-body { padding: 28px 20px; }
   .dl-col { padding: 24px; }
   .dl-col-k { font-size: 40px; margin-bottom: 20px; }
 }
